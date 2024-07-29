@@ -1,0 +1,15 @@
+.plant-card{
+    background-color: #f0f0f0;
+    padding: 20px;
+    margin: 20px;
+    border-radius: 20px;
+    border: 1px solid black;
+    width: 500px;
+}
+.plant-title{
+    font-size: 24px;
+    text-align: center;
+}
+.plant-price{
+    
+}

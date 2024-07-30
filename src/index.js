@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom/client';
 import {RouterProvider, createBrowserRouter } from 'react-router-dom';
 import Home from "./views/Home/Home"
 import {Toaster} from 'react-hot-toast'
+import AddPlant from './views/AddPlant/AddPlant';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -11,6 +12,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home/>
+  },
+  {
+    path: "/add",
+    element:<AddPlant/>
   },
   {
     path: "*",

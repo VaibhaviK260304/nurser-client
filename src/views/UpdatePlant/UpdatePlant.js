@@ -3,7 +3,7 @@ import "./UpdatePlant.css"
 import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
 import toast, {toaster} from 'react-hot-toast'
-import addplant from "./../AddPlant/AddPlant"
+// import addplant from "./../AddPlant/AddPlant"
 
 function UpdatePlant() {
   const { id } = useParams();

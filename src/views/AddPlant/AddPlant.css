@@ -13,7 +13,10 @@
     padding: 10px;
 }
 h1{
-    background-color:rgb(133, 184, 57);
+    background-color: rgb(180, 136, 78);
+    color: white;
+    text-align: center;
+    padding: 20px;
 }
 .img{
     width: 150px;

@@ -1,23 +1,35 @@
 import React, {useEffect, useState} from 'react'
 import "./UpdatePlant.css"
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import axios from 'axios'
-// import addplant from "./../AddPlant/AddPlant"
+import toast, {toaster} from 'react-hot-toast'
+import addplant from "./../AddPlant/AddPlant"
 
 function UpdatePlant() {
   const { id } = useParams();
-
   const [name, setName] = useState("")
   const [category, setCategory] = useState("")
-  const [price, setPrice] = useState("")
+  const [price, setPrice] = useState(0)
   const [image, setImage] = useState("")
   const [description, setDescription] = useState("")
 
-  const updateplant = ()=>{
-
+  const updateplant = async ()=>{
+    const response = await axios.put(`${process.env.REACT_APP_API_URL}/plant/${id}`, {
+      name,
+      image,
+      description,
+      price
+    })
+    toast.loading("Loading")
+    setTimeout(() => {
+      toast.dismiss()
+      toast.success(response.data.message)
+    }, 1000)
   }
-  const loadPlant = async ()=>{
+
+  const loadPlant = async(id)=>{
     if(!id){
+      toast.error('Invalid ID')
       return;
     }
     const response =await axios.get(`${process.env.REACT_APP_API_URL}/plant/${id}`)
@@ -29,12 +41,16 @@ function UpdatePlant() {
     setDescription(description)
   }
 
-  useEffect(()=>loadPlant(id),{id})
+  useEffect(()=>{
+    if(id){
+    loadPlant(id)
+    }
+  },[id])
 
 
   return (
     <div>
-      <h1>Update Plant {id}</h1>
+      <h1>Update Plant</h1>
       <form className='form'>
             <input 
                 type='text'
@@ -74,7 +90,8 @@ function UpdatePlant() {
             />
 
             <button type='button' className='ad'>Update Plant</button>
-        </form>     
+        </form>  
+        <Link to="/">Show all palnts</Link>   
     </div>
 
   )
